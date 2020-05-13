@@ -1,0 +1,6 @@
+number = int(input('Введите число n: '))
+number = str(number)
+number2 = int(number + number)
+number3 = int(number + number + number)
+number = int(number)
+print(f'Сумма {number} + {number2} + {number3} равна {number + number2 + number3}')
