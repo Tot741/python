@@ -11,4 +11,3 @@ with open('text.txt', 'r') as f_obj:
         count += 1
         print(f'Количество слов в {count} строке - {len(line.split())}')
 print(f'Количество строк в файле - {count}')
-

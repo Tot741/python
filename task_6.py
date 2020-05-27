@@ -1,4 +1,5 @@
 import re
+
 try:
     dict_lesson = {}
     with open('text_6.txt') as file_obj:
