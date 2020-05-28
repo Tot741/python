@@ -8,8 +8,8 @@ try:
         for line in file_obj:
             profit = int(re.findall(r'\d+', line)[0]) - int(re.findall(r'\d+', line)[1])
             name = line.split()[0]
-            average_profit += profit if profit > 0 else profit
-            i += 1 if profit > 0 else i
+            average_profit += profit if profit > 0 else 0
+            i += 1 if profit > 0 else 0
             dict_firm.update({name: profit})
     dict_average_profit = {'average_profit': average_profit / i}
     finish_list = [dict_firm, dict_average_profit]
