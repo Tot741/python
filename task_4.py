@@ -1,26 +1,76 @@
-import requests
+class Car:
+    def __init__(self, speed, color, name, is_police):
+        self.speed = speed
+        self.color = color
+        self.name = name
+        self.is_police = is_police
 
-URL = "https://translate.yandex.net/api/v1.5/tr.json/translate"
-KEY = "trnsl.1.1.20200526T044420Z.45356d47c64802bf.23948a7f49eb0b70aa9115cd6a71f6f9aca06b33"
+    def go(self):
+        print(f'Машина {self.color} {self.name} поехала')
+
+    def stop(self):
+        print(f'Машина {self.color} {self.name} остановилась')
+
+    def turn(self, direction):
+        print(f'Машина {self.color} {self.name} повернула {direction}')
+
+    def show_speed(self):
+        print(f'Текущая скорость - {self.speed}')
 
 
-def translate_me(mytext):
-    params = {
-        "key": KEY,
-        "text": mytext,
-        "lang": 'en-ru'
-    }
-    response = requests.get(URL, params=params)
-    response = response.json()
-    return ''.join(response['text'])
+class TownCar(Car):
+    def __init__(self, speed, color, name, is_police):
+        super().__init__(speed, color, name, is_police)
+
+    def show_speed(self):
+        if self.speed > 60:
+            print(f'Ваша скорость {self.speed}. Это больше 60 км/ч. Вы превышаете!')
 
 
-try:
-    with open('text_4.txt') as read_obj:
-        with open('text_4_ru.txt', 'w', encoding='utf-8') as write_obj:
-            for line in read_obj:
-                line = line.split()
-                ru = translate_me(line[0])
-                print(ru, line[1], line[2], file=write_obj)
-except FileNotFoundError:
-    print('Файл с данными не найден или имеет неправильное имя.\nИмя файла должно быть text_4.txt')
+class SportCar(Car):
+    def __init__(self, speed, color, name, is_police):
+        super().__init__(speed, color, name, is_police)
+
+
+class WorkCar(Car):
+    def __init__(self, speed, color, name, is_police):
+        super().__init__(speed, color, name, is_police)
+
+    def show_speed(self):
+        if self.speed > 40:
+            print(f'Ваша скорость {self.speed}. Это больше 40 км/ч. Вы превышаете!')
+
+
+class PoliceCar(Car):
+    def __init__(self, speed, color, name, is_police):
+        super().__init__(speed, color, name, is_police)
+        if self.is_police == True:
+            print('Это полицейская машина!')
+
+
+a = Car(60, 'красный', 'BMW', False)
+a.go()
+a.stop()
+a.turn('влево')
+a.show_speed()
+b = TownCar(70, 'белый', 'Skoda', False)
+b.go()
+b.stop()
+b.turn('вправо')
+print(f'Текущая скорость - {b.speed}')
+b.show_speed()
+c = SportCar(150, 'красный', 'Porche', False)
+c.go()
+c.stop()
+c.turn('назад')
+c.show_speed()
+d = WorkCar(60, 'белый', 'Skoda', False)
+d.go()
+d.stop()
+d.turn('влево')
+d.show_speed()
+e = PoliceCar(60, 'синий', 'Chevrolet', True)
+e.go()
+e.stop()
+e.turn('вправо')
+e.show_speed()

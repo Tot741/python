@@ -1,11 +1,40 @@
-import random
+class Stationery:
+    def __init__(self, title):
+        self.title = title
 
-with open('text_5.txt', 'w', ) as f_obj:
-    for i in range(10):
-        print(f'{random.randint(1, 100)} ', end='', file=f_obj)
-sum_num = 0
-with open('text_5.txt') as f_obj:
-    string = f_obj.readline().split()
-    for number in string:
-        sum_num += int(number)
-print(f'Сумма чисел в файле - {sum_num}')
+    def draw(self):
+        print('Запуск отрисовки')
+
+
+class Pen(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def draw(self):
+        print('Запуск отрисовки ручкой')
+
+
+class Pencil(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def draw(self):
+        print('Запуск отрисовки карандашом')
+
+
+class Handle(Stationery):
+    def __init__(self, title):
+        super().__init__(title)
+
+    def draw(self):
+        print('Запуск отрисовки маркером')
+
+
+a = Stationery('Перо')
+a.draw()
+b = Pen('Ручка')
+b.draw()
+c = Pencil('Карандаш')
+c.draw()
+d = Handle('Маркер')
+d.draw()
