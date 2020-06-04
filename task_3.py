@@ -10,7 +10,7 @@ class Cell:
     def __sub__(self, other):
 
         return self.quantity - other.quantity if (
-                                                             self.quantity - other.quantity) > 0 else 'Невозможно произвести вычитание'
+                                                         self.quantity - other.quantity) > 0 else 'Невозможно произвести вычитание'
 
     def __mul__(self, other):
         return self.quantity * other.quantity
